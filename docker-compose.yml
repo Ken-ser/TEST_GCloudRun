@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+
+  # === SERVICE ===
+  server-local:
+    build:
+      context: .
+      dockerfile: docker/main/Dockerfile.local
+    ports:
+      - '3000:3000'
+    environment:
+      DOCKER: 1
+    restart: always
