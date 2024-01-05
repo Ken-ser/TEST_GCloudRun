@@ -36,5 +36,5 @@ COPY --from=ts-compile /app/packages/main/build/ ./packages/main/build/
 
 COPY packages/main/env.local.yml ./packages/main/env.local.yml
 
-EXPOSE 3000
+EXPOSE 8080
 CMD cd packages/main && yarn start:no-build

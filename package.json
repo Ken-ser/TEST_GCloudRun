@@ -3,15 +3,20 @@
   "version": "0.0.1",
   "private": true,
   "packageManager": "yarn@3.7.0",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
+  "main": "build/server.js",
   "workspaces": {
     "packages": [
       "./packages/*"
     ]
   },
   "scripts": {
-    "docker:start": "docker compose up -d --build",
-    "docker:stop": "docker compose down"
+    "docker:start": "docker run --name be -d --rm -e PORT=8080 -p 9090:8080 us-west2-docker.pkg.dev/decent-mariner-410209/cloud-run-source-deploy/testgcloudrun",
+    "docker:stop": "docker stop be",
+    "gcrun:build": "docker build . --tag us-west2-docker.pkg.dev/decent-mariner-410209/cloud-run-source-deploy/testgcloudrun",
+    "gcrun:push": "docker push us-west2-docker.pkg.dev/decent-mariner-410209/cloud-run-source-deploy/testgcloudrun",
+    "gcrun:deploy": "gcloud run deploy hello-service --image us-west2-docker.pkg.dev/decent-mariner-410209/cloud-run-source-deploy/testgcloudrun",
+    "gcrun:all": "yarn gcrun:build && yarn gcrun:push && yarn gcrun:deploy"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.15.0",
