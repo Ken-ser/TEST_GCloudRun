@@ -1,5 +1,5 @@
 {
-  "name": "@academy-be/main",
+  "name": "@gcloudrun-test/main",
   "version": "1.0.0",
   "private": true,
   "packageManager": "yarn@3.7.0",

@@ -12,8 +12,8 @@ COPY tsconfig.json .
 FROM base as ts-compile
 
 COPY packages/main ./packages/main
-RUN yarn workspaces focus @academy-be/main
-RUN yarn workspace @academy-be/main build
+RUN yarn workspaces focus @gcloudrun-test/main
+RUN yarn workspace @gcloudrun-test/main build
 
 
 FROM base as be-builder
@@ -22,7 +22,7 @@ WORKDIR /app
 
 COPY /packages/main/package.json ./packages/main/package.json
 
-RUN yarn workspaces focus @academy-be/main --production
+RUN yarn workspaces focus @gcloudrun-test/main --production
 
 
 FROM node:20.10.0-alpine

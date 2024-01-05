@@ -12,30 +12,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@academy-be/main@workspace:packages/main":
-  version: 0.0.0-use.local
-  resolution: "@academy-be/main@workspace:packages/main"
-  dependencies:
-    "@efebia/env-loader": ^0.0.9
-    "@efebia/fastify-auto-import": ^0.0.3
-    "@fastify/cors": ^8.5.0
-    "@fastify/swagger": ^8.12.1
-    "@fastify/swagger-ui": ^2.0.1
-    "@jest/globals": ^29.7.0
-    "@types/jest": ^29.5.11
-    "@types/jsonwebtoken": ^9.0.5
-    "@types/node": ^20.10.5
-    ajv: ^8.12.0
-    ajv-formats: ^2.1.1
-    argon2: ^0.31.2
-    fastify: ^4.25.1
-    jsonwebtoken: ^9.0.2
-    typescript: ^5.3.3
-    zod: ^3.22.4
-    zod-to-json-schema: ^3.22.3
-  languageName: unknown
-  linkType: soft
-
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.2.1
   resolution: "@ampproject/remapping@npm:2.2.1"
@@ -598,6 +574,30 @@ __metadata:
   checksum: b8afcebfef9fbbb8c7e1c01b3b49298fa492123e6e0d58dd49eaf948bf1e276c86433ae873923402aeaefcd642e29f711123d628035443f0a9a3c124c9c53bc8
   languageName: node
   linkType: hard
+
+"@gcloudrun-test/main@workspace:packages/main":
+  version: 0.0.0-use.local
+  resolution: "@gcloudrun-test/main@workspace:packages/main"
+  dependencies:
+    "@efebia/env-loader": ^0.0.9
+    "@efebia/fastify-auto-import": ^0.0.3
+    "@fastify/cors": ^8.5.0
+    "@fastify/swagger": ^8.12.1
+    "@fastify/swagger-ui": ^2.0.1
+    "@jest/globals": ^29.7.0
+    "@types/jest": ^29.5.11
+    "@types/jsonwebtoken": ^9.0.5
+    "@types/node": ^20.10.5
+    ajv: ^8.12.0
+    ajv-formats: ^2.1.1
+    argon2: ^0.31.2
+    fastify: ^4.25.1
+    jsonwebtoken: ^9.0.2
+    typescript: ^5.3.3
+    zod: ^3.22.4
+    zod-to-json-schema: ^3.22.3
+  languageName: unknown
+  linkType: soft
 
 "@humanwhocodes/config-array@npm:^0.11.13":
   version: 0.11.13
@@ -1181,23 +1181,6 @@ __metadata:
   checksum: 6967d15e5abbafd17f56eaf30ba8278c99333586fa4f7935fd80e93cfdc006c37fcc819c5d63ee373a12e6cb2d0417f7c3c6b9e42b957a25af9937d26749415e
   languageName: node
   linkType: hard
-
-"academy-be@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "academy-be@workspace:."
-  dependencies:
-    "@typescript-eslint/eslint-plugin": ^6.15.0
-    "@typescript-eslint/parser": ^6.15.0
-    eslint: ^8.56.0
-    eslint-import-resolver-typescript: ^3.6.1
-    eslint-plugin-import: ^2.29.1
-    eslint-plugin-node: ^11.1.0
-    lint-staged: ^15.2.0
-    prettier: ^3.1.1
-    simple-git-hooks: ^2.9.0
-    typescript: ^5.3.3
-  languageName: unknown
-  linkType: soft
 
 "acorn-jsx@npm:^5.3.2":
   version: 5.3.2
@@ -2752,6 +2735,23 @@ __metadata:
   checksum: 81296c00c7410cdd48f997800155fbead4f32e4f82109be0719c63edc8560e6579946cc8abd04205297640691ec26d21b578837fd13a4e96288ab4b40b1dc3e9
   languageName: node
   linkType: hard
+
+"gcloudrun-test@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "gcloudrun-test@workspace:."
+  dependencies:
+    "@typescript-eslint/eslint-plugin": ^6.15.0
+    "@typescript-eslint/parser": ^6.15.0
+    eslint: ^8.56.0
+    eslint-import-resolver-typescript: ^3.6.1
+    eslint-plugin-import: ^2.29.1
+    eslint-plugin-node: ^11.1.0
+    lint-staged: ^15.2.0
+    prettier: ^3.1.1
+    simple-git-hooks: ^2.9.0
+    typescript: ^5.3.3
+  languageName: unknown
+  linkType: soft
 
 "gensync@npm:^1.0.0-beta.2":
   version: 1.0.0-beta.2
