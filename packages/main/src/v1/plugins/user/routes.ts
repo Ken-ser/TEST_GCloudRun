@@ -1,14 +1,13 @@
 import type { FastifyPluginAsync } from 'fastify';
+import application from './application.js';
 
-import login from './login.js';
-
-const userPlugin: FastifyPluginAsync = async (fastify, _options) => {
+const applicationPlugin: FastifyPluginAsync = async (fastify, _options) => {
   await fastify.register(
     async (fastify) => {
-      fastify.post('/login', login);
+      fastify.post('', application);
     },
-    { prefix: '/user' },
+    { prefix: '/application' },
   );
 };
 
-export default userPlugin;
+export default applicationPlugin;

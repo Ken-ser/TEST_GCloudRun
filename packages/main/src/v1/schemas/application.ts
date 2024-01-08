@@ -1,14 +1,14 @@
 import { z } from 'zod';
 
-export const loginArgs = z
+export const applicationArgs = z
   .object({
     email: z.string(),
     password: z.string(),
   })
   .required();
 
-export const loginResponse = z
+export const applicationResponse = z
   .object({
-    jwt: z.string(),
+    message: z.string(),
   })
   .required();

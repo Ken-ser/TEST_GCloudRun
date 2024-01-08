@@ -33,7 +33,7 @@ export type BaseZodSchema = {
   Headers?: z.ZodTypeAny;
   Reply: z.AnyZodObject;
   Security?: ({ bearerAuth: [] } | { apikeyAuth: [] })[];
-  Tags?: ('user' | 'file' | 'group')[];
+  Tags?: ('application')[];
 };
 export type FastifyZodSchema<TZodSchema extends BaseZodSchema> = {
   Body: TZodSchema['Body'] extends z.ZodTypeAny ? z.infer<TZodSchema['Body']> : undefined;
@@ -56,10 +56,10 @@ export const route = <
   TSchema extends BaseZodSchema,
   FastifySchema extends FastifyZodSchema<TSchema> = FastifyZodSchema<TSchema>,
 >(
-    schema: TSchema,
-    handler: APIHandler<FastifySchema>,
-    _opts?: { debug: boolean },
-  ): APIOptions<FastifySchema> & { handler: APIHandler<FastifySchema> } => {
+  schema: TSchema,
+  handler: APIHandler<FastifySchema>,
+  _opts?: { debug: boolean },
+): APIOptions<FastifySchema> & { handler: APIHandler<FastifySchema> } => {
   const finalResult: {
     body?: Record<string, unknown>;
     params?: Record<string, unknown>;

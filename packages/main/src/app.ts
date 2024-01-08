@@ -7,6 +7,7 @@ import { fastifyPlugin } from 'fastify-plugin';
 import { createDefaultAjv } from './libs/fastify/ajv.js';
 import { responses } from './libs/fastify/responses.js';
 import { middlewareError } from './libs/middlewares/error.js';
+import fastifyMultipart from '@fastify/multipart';
 
 export const createApplication = async () => {
   const app = fastify();
@@ -16,6 +17,8 @@ export const createApplication = async () => {
     origin: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD'],
   });
+
+  app.register(fastifyMultipart, { attachFieldsToBody: 'keyValues' })
 
   await app.register(fastifyPlugin(responses));
 
