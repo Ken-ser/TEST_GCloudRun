@@ -18,7 +18,7 @@ export const createApplication = async () => {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD'],
   });
 
-  app.register(fastifyMultipart, { attachFieldsToBody: 'keyValues' })
+  await app.register(fastifyMultipart, { attachFieldsToBody: 'keyValues' })
 
   await app.register(fastifyPlugin(responses));
 

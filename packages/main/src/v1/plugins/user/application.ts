@@ -1,9 +1,10 @@
-import { applicationResponse } from '../../schemas/application.js';
+import { applicationArgs, applicationResponse } from '../../schemas/application.js';
 import { route } from '../../../libs/fastify/route.js';
 import { initializeApp } from 'firebase/app';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { z } from 'zod';
+import { HTTP } from '../../../libs/fastify/responses.js';
 
 const app = initializeApp({
   apiKey: "AIzaSyDpMCGWJTtw4BrfiXAPvEpjc_1YJH9D7Sc",
@@ -18,24 +19,18 @@ const app = initializeApp({
 export default route(
   {
     Tags: ['application'],
-    Body: z.object({
-      cv: z.instanceof(Buffer),
-      name: z.string(),
-      surname: z.string(),
-      email: z.string().email(),
-      position: z.enum(['be', 'fe']),
-      motivation: z.string(),
-    }),
+    Body: applicationArgs,
     Reply: z.object({
       200: applicationResponse,
-      400: z.object({ message: z.string() }),
-      500: z.object({ message: z.string() })
+      400: applicationResponse,
+      500: applicationResponse
     }),
   },
   async (req, reply) => {
     const { cv, name, surname, email, position, motivation } = req.body;
+    
     if (!cv) {
-      return reply.badRequest('Invalid CV!');
+      return HTTP.badRequest({ message: 'Invalid CV!' });
     }
 
     try {
@@ -56,7 +51,7 @@ export default route(
       return reply.ok({ message: 'File uploaded successfully' });
     } catch (error) {
       console.error(error);
-      return reply.internalServerError('Internal Server Error');
+      return HTTP.internalServerError({ message: 'Internal Server Error' });
     }
   }
 );
