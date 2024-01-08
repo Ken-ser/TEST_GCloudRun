@@ -5,15 +5,16 @@ import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { z } from 'zod';
 import { HTTP } from '../../../libs/fastify/responses.js';
+import { getEnv } from '../../../libs/env.js';
 
 const app = initializeApp({
-  apiKey: "AIzaSyDpMCGWJTtw4BrfiXAPvEpjc_1YJH9D7Sc",
-  authDomain: "just-zoo-234019.firebaseapp.com",
-  projectId: "just-zoo-234019",
-  storageBucket: "just-zoo-234019.appspot.com",
-  messagingSenderId: "77441162770",
-  appId: "1:77441162770:web:fa73363ac4a50f400102cb",
-  measurementId: "G-KP352CF1RT"
+  apiKey: getEnv('apiKey'),
+  authDomain: getEnv('authDomain'),
+  projectId: getEnv('projectId'),
+  storageBucket: getEnv('storageBucket'),
+  messagingSenderId: getEnv('messagingSenderId'),
+  appId: getEnv('appId'),
+  measurementId: getEnv('measurementId')
 });
 
 export default route(
@@ -28,7 +29,7 @@ export default route(
   },
   async (req, reply) => {
     const { cv, name, surname, email, position, motivation } = req.body;
-    
+
     if (!cv) {
       return HTTP.badRequest({ message: 'Invalid CV!' });
     }
