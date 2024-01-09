@@ -22,16 +22,14 @@ export default route(
     Tags: ['application'],
     Body: applicationArgs,
     Reply: z.object({
-      200: applicationResponse,
-      400: applicationResponse,
-      500: applicationResponse
+      200: applicationResponse
     }),
   },
   async (req, reply) => {
     const { cv, name, surname, email, position, motivation } = req.body;
 
     if (!cv) {
-      return HTTP.badRequest({ message: 'Invalid CV!' });
+      throw HTTP.badRequest({ message: 'Invalid CV!' });
     }
 
     try {
@@ -42,7 +40,7 @@ export default route(
         contentType: 'application/pdf',
       });
 
-      console.log('Filename Input Value:', req.body);
+      console.log('Body:', req.body);
 
       const db = getFirestore(app);
       // Push data into Firestore
@@ -52,7 +50,7 @@ export default route(
       return reply.ok({ message: 'File uploaded successfully' });
     } catch (error) {
       console.error(error);
-      return HTTP.internalServerError({ message: 'Internal Server Error' });
+      throw HTTP.internalServerError({ message: 'Internal Server Error' });
     }
   }
 );

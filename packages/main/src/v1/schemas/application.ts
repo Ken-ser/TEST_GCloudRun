@@ -9,8 +9,6 @@ export const applicationArgs = z.object({
   motivation: z.string(),
 });
 
-export const applicationResponse = z
-  .object({
-    message: z.string(),
-  })
-  .required();
+export const applicationResponse = z.object({
+  message: z.string(),
+});

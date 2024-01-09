@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "incremental": true,
     "noErrorTruncation": false,
+    "resolveJsonModule": true,
 
     /* Type Checking */
     "strict": true /* Enable all strict type-checking options. */,
