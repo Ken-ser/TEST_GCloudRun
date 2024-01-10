@@ -13,8 +13,9 @@ export const createApplication = async () => {
   const app = fastify();
 
   createDefaultAjv();
+
   await app.register(fastifyCors, {
-    origin: true,
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD'],
   });
 

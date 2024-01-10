@@ -8,5 +8,5 @@ export interface Declaration {
   storageBucket: string;
   messagingSenderId: string;
   appId: string;
-  measurementId: string;
+  slackwebhook: string;
 }
