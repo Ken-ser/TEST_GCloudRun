@@ -8,13 +8,14 @@
     "esModuleInterop": false,
     "moduleResolution": "NodeNext",
     // "types": ["jest", "node"],
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "checkJs": false,
     "skipLibCheck": true,
     "incremental": true,
     "noErrorTruncation": false,
     "resolveJsonModule": true,
-
     /* Type Checking */
     "strict": true /* Enable all strict type-checking options. */,
     "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied `any` type.. */,
@@ -40,6 +41,14 @@
     "watchFile": "useFsEvents",
     "watchDirectory": "useFsEvents"
   },
-  "include": ["src/*.ts", "src/**/*.ts", "src/**/*.js", "types/**/*.ts"],
-  "exclude": ["node_modules", "build"]
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts",
+    "src/**/*.js",
+    "types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
 }

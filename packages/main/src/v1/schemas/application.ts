@@ -5,7 +5,7 @@ export const applicationArgs = z.object({
   name: z.string(),
   surname: z.string(),
   email: z.string().email(),
-  position: z.enum(['be', 'fe']),
+  position: z.enum(['backend', 'frontend', 'blockchain', 'webdesign', 'spontaneous']),
   motivation: z.string(),
 });
 

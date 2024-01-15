@@ -5,7 +5,11 @@
     "node": true,
     "jest": true
   },
-  "extends": ["eslint:recommended", "plugin:import/recommended", "plugin:import/typescript"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
   "globals": {
     "matchSchema": "readonly",
     "log": "readonly",
@@ -13,22 +17,54 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": ["./tsconfig.json", "./packages/*/tsconfig.json"]
+    "project": [
+      "./tsconfig.json",
+      "./packages/*/tsconfig.json"
+    ]
   },
-  "plugins": ["@typescript-eslint", "import"],
+  "plugins": [
+    "@typescript-eslint",
+    "import"
+  ],
   "rules": {
     // from TSLint
-    "@typescript-eslint/no-floating-promises": ["error", { "ignoreVoid": true }],
-
-    "indent": ["error", 2],
-    "quotes": ["warn", "single", { "allowTemplateLiterals": true }],
-    "semi": ["error", "always"],
-    "linebreak-style": ["error", "unix"],
-    "keyword-spacing": ["error", { "before": true, "after": true }],
-    "object-curly-spacing": ["error", "always"],
-
+    "@typescript-eslint/no-floating-promises": [
+      "error",
+      {
+        "ignoreVoid": true
+      }
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "quotes": [
+      "warn",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
     // https://eslint.org/docs/rules/
-
     //recommended
     "array-callback-return": "error",
     "constructor-super": "error",
@@ -80,16 +116,29 @@
     "no-unsafe-negation": "error", //cool https://eslint.org/docs/rules/no-unsafe-negation
     "no-unsafe-optional-chaining": "error",
     "no-unused-private-class-members": "error",
-    "no-unused-vars": ["error", { "vars": "all", "args": "none" }],
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
     "no-use-before-define": "error",
     "no-useless-backreference": "error",
-    "require-atomic-updates": ["error", { "allowProperties": true }],
+    "require-atomic-updates": [
+      "error",
+      {
+        "allowProperties": true
+      }
+    ],
     "use-isnan": "error",
     "valid-typeof": "error",
-
     //suggestions
     "accessor-pairs": "warn",
-    "arrow-body-style": ["error", "as-needed"],
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ],
     "block-scoped-var": "error",
     "camelcase": [
       "error",
@@ -102,26 +151,55 @@
     ],
     "capitalized-comments": "off",
     "class-methods-use-this": "off",
-    "complexity": ["warn", 18],
+    "complexity": [
+      "warn",
+      18
+    ],
     //"consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
-    "consistent-this": ["error", "that"],
+    "consistent-this": [
+      "error",
+      "that"
+    ],
     //"curly": ["error", "never"],
     "default-case": "error",
     "default-case-last": "error",
     "default-param-last": "warn",
-    "dot-notation": ["off"],
-    "eqeqeq": ["off"],
-    "func-name-matching": ["off"],
+    "dot-notation": [
+      "off"
+    ],
+    "eqeqeq": [
+      "off"
+    ],
+    "func-name-matching": [
+      "off"
+    ],
     //"func-names": ["error", "never"],
-    "func-style": ["warn", "expression"],
-    "grouped-accessor-pairs": ["error", "getBeforeSet"],
+    "func-style": [
+      "warn",
+      "expression"
+    ],
+    "grouped-accessor-pairs": [
+      "error",
+      "getBeforeSet"
+    ],
     "guard-for-in": "error",
     "id-blacklist": "off",
-    "id-length": ["error", { "min": 1, "max": 64 }],
+    "id-length": [
+      "error",
+      {
+        "min": 1,
+        "max": 64
+      }
+    ],
     "id-match": "off",
     "init-declarations": "off",
-    "max-classes-per-file": ["off"],
-    "max-depth": ["error", 4],
+    "max-classes-per-file": [
+      "off"
+    ],
+    "max-depth": [
+      "error",
+      4
+    ],
     "max-len": [
       "error",
       {
@@ -136,11 +214,25 @@
     // 	"skipComments": false,
     // 	"IIFEs": true
     // }],
-    "max-nested-callbacks": ["error", 3],
-    "max-params": ["warn", 5],
-    "max-statements": ["warn", 30],
+    "max-nested-callbacks": [
+      "error",
+      3
+    ],
+    "max-params": [
+      "warn",
+      5
+    ],
+    "max-statements": [
+      "warn",
+      30
+    ],
     //"multiline-comment-style": ["error", "separate-lines"],
-    "new-cap": ["error", { "capIsNew": false }],
+    "new-cap": [
+      "error",
+      {
+        "capIsNew": false
+      }
+    ],
     "no-alert": "error",
     "no-array-constructor": "error",
     "no-bitwise": "warn",
@@ -230,7 +322,10 @@
     "no-with": "error",
     "object-shorthand": "error",
     "one-var-declaration-per-line": "error",
-    "operator-assignment": ["error", "always"],
+    "operator-assignment": [
+      "error",
+      "always"
+    ],
     "prefer-arrow-callback": "error",
     "prefer-const": [
       "error",
@@ -248,7 +343,10 @@
     "prefer-rest-params": "error",
     "prefer-spread": "error",
     "prefer-template": "error",
-    "quote-props": ["error", "as-needed"],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
     "radix": "error",
     "require-await": "error",
     "require-unicode-regexp": "error",
@@ -261,7 +359,6 @@
     "symbol-description": "error",
     "vars-on-top": "error",
     "yoda": "error"
-
     //Layout & Formatting
     //"array-bracket-newline": "off",
     //"array-bracket-spacing": "off",
@@ -325,16 +422,26 @@
     //"wrap-regex": "error",
     //"yield-star-spacing": "error",
   },
-  "ignorePatterns": ["**/node_modules/**", "**/build/**", "**/coverage/**"],
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/build/**",
+    "**/coverage/**"
+  ],
   "settings": {
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true,
-        "project": ["./tsconfig.json", "./packages/*/tsconfig.json"]
+        "project": [
+          "./tsconfig.json",
+          "./packages/*/tsconfig.json"
+        ]
       }
     },
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     }
   }
 }

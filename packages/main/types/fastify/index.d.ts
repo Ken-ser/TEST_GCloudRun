@@ -3,10 +3,10 @@ import 'fastify';
 declare module 'fastify' {
   export interface FastifyRequest {
     jwt:
-      | {
-          _id: string;
-        }
-      | undefined;
+    | {
+      _id: string;
+    }
+    | undefined;
   }
 
   export interface FastifyReply {

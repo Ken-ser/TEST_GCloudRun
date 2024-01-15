@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { applicationArgs, applicationResponse } from '../../schemas/application.js';
 import { route } from '../../../libs/fastify/route.js';
 import { initializeApp } from 'firebase/app';
@@ -42,69 +43,69 @@ export default route(
       const db = getFirestore(app);
       // Push data into Firestore
       const applicationRef = doc(db, 'applications', `${name} ${surname}`);
-      await setDoc(applicationRef, { name, surname, email, position, motivation }, { merge: true })
+      await setDoc(applicationRef, { name, surname, email, position, motivation }, { merge: true });
 
       await fetch(getEnv('slackwebhook'), {
         method: 'POST',
         body: JSON.stringify({
           blocks: [
             {
-              type: "header",
+              type: 'header',
               text: {
-                type: "plain_text",
-                text: "New application :inbox_tray:",
+                type: 'plain_text',
+                text: 'New application :inbox_tray:',
                 emoji: true
               }
             },
             {
-              "type": "divider"
+              type: 'divider'
             },
             {
-              type: "section",
+              type: 'section',
               fields: [
                 {
-                  type: "mrkdwn",
+                  type: 'mrkdwn',
                   text: `*Name:*\n${name}`
                 },
                 {
-                  type: "mrkdwn",
+                  type: 'mrkdwn',
                   text: `*Surname:*\n${surname}`
                 }
               ]
             },
             {
-              type: "section",
+              type: 'section',
               fields: [
                 {
-                  type: "mrkdwn",
+                  type: 'mrkdwn',
                   text: `*Position:*\n${position}`
                 },
                 {
-                  type: "mrkdwn",
+                  type: 'mrkdwn',
                   text: `*Email:*\n${email}`
                 }
               ]
             },
             {
-              type: "section",
+              type: 'section',
               text: {
-                type: "mrkdwn",
+                type: 'mrkdwn',
                 text: `*Motivation:*\n${motivation}`
               }
             },
             {
-              type: "actions",
+              type: 'actions',
               elements: [
                 {
-                  type: "button",
+                  type: 'button',
                   text: {
-                    type: "plain_text",
-                    text: "Download C.V. ⬇️",
+                    type: 'plain_text',
+                    text: 'Download C.V. ⬇️',
                     emoji: true
                   },
                   url: `${await getDownloadURL(fileUploaded.ref)}`,
-                  value: "Download C.V. :arrow_down:",
-                  action_id: "actionId-0"
+                  value: 'Download C.V. :arrow_down:',
+                  action_id: 'actionId-0'
                 }
               ]
             }

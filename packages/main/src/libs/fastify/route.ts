@@ -56,10 +56,10 @@ export const route = <
   TSchema extends BaseZodSchema,
   FastifySchema extends FastifyZodSchema<TSchema> = FastifyZodSchema<TSchema>,
 >(
-  schema: TSchema,
-  handler: APIHandler<FastifySchema>,
-  _opts?: { debug: boolean },
-): APIOptions<FastifySchema> & { handler: APIHandler<FastifySchema> } => {
+    schema: TSchema,
+    handler: APIHandler<FastifySchema>,
+    _opts?: { debug: boolean },
+  ): APIOptions<FastifySchema> & { handler: APIHandler<FastifySchema> } => {
   const finalResult: {
     body?: Record<string, unknown>;
     params?: Record<string, unknown>;
