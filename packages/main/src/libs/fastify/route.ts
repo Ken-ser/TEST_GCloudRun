@@ -26,6 +26,8 @@ export type APIHandler<RouteInterface extends RouteGenericInterface = RouteGener
 const mapZodError = (zodError: z.ZodError, prefix: string) =>
   zodError.errors.map((issue) => `Error at ${prefix}->${issue.path.join('->')}`).join(';\n');
 
+export type Tag = 'application' | 'contact';
+
 export type BaseZodSchema = {
   Body?: z.ZodTypeAny;
   Params?: z.ZodTypeAny;
@@ -33,7 +35,7 @@ export type BaseZodSchema = {
   Headers?: z.ZodTypeAny;
   Reply: z.AnyZodObject;
   Security?: ({ bearerAuth: [] } | { apikeyAuth: [] })[];
-  Tags?: ('application')[];
+  Tags?: Tag[];
 };
 export type FastifyZodSchema<TZodSchema extends BaseZodSchema> = {
   Body: TZodSchema['Body'] extends z.ZodTypeAny ? z.infer<TZodSchema['Body']> : undefined;

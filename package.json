@@ -13,6 +13,7 @@
   "scripts": {
     "docker:start": "docker run --name be -d --rm -e PORT=8080 -p 9090:8080 europe-west3-docker.pkg.dev/efebia-website/efebia-website-aregistry/application-service-image",
     "docker:stop": "docker stop be",
+    "docker:all": "yarn gcrun:build && yarn gcrun:push && yarn docker:start",
     "gcrun:build": "docker build . --tag europe-west3-docker.pkg.dev/efebia-website/efebia-website-aregistry/application-service-image",
     "gcrun:push": "docker push europe-west3-docker.pkg.dev/efebia-website/efebia-website-aregistry/application-service-image",
     "gcrun:deploy": "gcloud run deploy application-service --image europe-west3-docker.pkg.dev/efebia-website/efebia-website-aregistry/application-service-image",

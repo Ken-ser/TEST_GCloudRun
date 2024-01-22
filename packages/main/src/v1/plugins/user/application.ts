@@ -7,6 +7,7 @@ import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { z } from 'zod';
 import { HTTP } from '../../../libs/fastify/responses.js';
 import { getEnv } from '../../../libs/env.js';
+import { randomUUID } from 'node:crypto';
 
 const app = initializeApp({
   apiKey: getEnv('apiKey'),
@@ -34,16 +35,18 @@ export default route(
 
     try {
       const storage = getStorage(app);
-      const storageRef = ref(storage, `cvs/${name} ${surname}`);
+      const id = randomUUID();
+      const storageRef = ref(storage, `cvs/${id}`);
       // Push file into storage
       const fileUploaded = await uploadBytes(storageRef, cv, {
         contentType: 'application/pdf',
       });
+      const fileUrl = await getDownloadURL(fileUploaded.ref);
 
       const db = getFirestore(app);
       // Push data into Firestore
       const applicationRef = doc(db, 'applications', `${name} ${surname}`);
-      await setDoc(applicationRef, { name, surname, email, position, motivation }, { merge: true });
+      await setDoc(applicationRef, { cv: id, name, surname, email, position, motivation }, { merge: true });
 
       await fetch(getEnv('slackwebhook'), {
         method: 'POST',
@@ -103,7 +106,7 @@ export default route(
                     text: 'Download C.V. ⬇️',
                     emoji: true
                   },
-                  url: `${await getDownloadURL(fileUploaded.ref)}`,
+                  url: fileUrl,
                   value: 'Download C.V. :arrow_down:',
                   action_id: 'actionId-0'
                 }

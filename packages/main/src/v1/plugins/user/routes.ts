@@ -1,14 +1,15 @@
 import type { FastifyPluginAsync } from 'fastify';
 import application from './application.js';
+import contact from './contact.js';
 
-const applicationPlugin: FastifyPluginAsync = async (fastify, _options) => {
+const plugin: FastifyPluginAsync = async (fastify, _options) => {
   await fastify.register(
     // eslint-disable-next-line require-await
     async (fastify) => {
-      fastify.post('', application);
-    },
-    { prefix: '/application' },
+      fastify.post('/application', application);
+      fastify.post('/contact', contact);
+    }
   );
 };
 
-export default applicationPlugin;
+export default plugin;
