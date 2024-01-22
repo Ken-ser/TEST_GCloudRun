@@ -8,9 +8,25 @@ import { createDefaultAjv } from './libs/fastify/ajv.js';
 import { responses } from './libs/fastify/responses.js';
 import { middlewareError } from './libs/middlewares/error.js';
 import { fastifyMultipart } from '@fastify/multipart';
+import { FirebaseApp , initializeApp } from 'firebase/app';
+import { getEnv } from './libs/env.js';
+
+declare global {
+  // eslint-disable-next-line vars-on-top, no-var, no-unused-vars
+  var fireBaseApp: FirebaseApp;
+}
 
 export const createApplication = async () => {
   const app = fastify();
+
+  globalThis.fireBaseApp = initializeApp({
+    apiKey: getEnv('apiKey'),
+    authDomain: getEnv('authDomain'),
+    projectId: getEnv('projectId'),
+    storageBucket: getEnv('storageBucket'),
+    messagingSenderId: getEnv('messagingSenderId'),
+    appId: getEnv('appId')
+  });
 
   createDefaultAjv();
 

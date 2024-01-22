@@ -1,19 +1,9 @@
 import { route } from '../../../libs/fastify/route.js';
-import { initializeApp } from 'firebase/app';
 import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { z } from 'zod';
 import { getEnv } from '../../../libs/env.js';
 import { contactArgs, contactResponse } from '../../schemas/contact.js';
 import { randomUUID } from 'crypto';
-
-const app = initializeApp({
-  apiKey: getEnv('apiKey'),
-  authDomain: getEnv('authDomain'),
-  projectId: getEnv('projectId'),
-  storageBucket: getEnv('storageBucket'),
-  messagingSenderId: getEnv('messagingSenderId'),
-  appId: getEnv('appId')
-});
 
 export default route(
   {
@@ -26,7 +16,7 @@ export default route(
   async (req, reply) => {
     const { name, email, message } = req.body;
 
-    const db = getFirestore(app);
+    const db = getFirestore(globalThis.fireBaseApp);
     const id = randomUUID();
     // Push data into Firestore
     const contactRef = doc(db, 'messages', `${name}_${id}`);

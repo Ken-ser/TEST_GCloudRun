@@ -1,22 +1,11 @@
-/* eslint-disable camelcase */
 import { applicationArgs, applicationResponse } from '../../schemas/application.js';
 import { route } from '../../../libs/fastify/route.js';
-import { initializeApp } from 'firebase/app';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { z } from 'zod';
 import { HTTP } from '../../../libs/fastify/responses.js';
 import { getEnv } from '../../../libs/env.js';
 import { randomUUID } from 'node:crypto';
-
-const app = initializeApp({
-  apiKey: getEnv('apiKey'),
-  authDomain: getEnv('authDomain'),
-  projectId: getEnv('projectId'),
-  storageBucket: getEnv('storageBucket'),
-  messagingSenderId: getEnv('messagingSenderId'),
-  appId: getEnv('appId')
-});
 
 export default route(
   {
@@ -34,7 +23,7 @@ export default route(
     }
 
     try {
-      const storage = getStorage(app);
+      const storage = getStorage(globalThis.fireBaseApp);
       const id = randomUUID();
       const storageRef = ref(storage, `cvs/${id}`);
       // Push file into storage
@@ -43,7 +32,7 @@ export default route(
       });
       const fileUrl = await getDownloadURL(fileUploaded.ref);
 
-      const db = getFirestore(app);
+      const db = getFirestore(globalThis.fireBaseApp);
       // Push data into Firestore
       const applicationRef = doc(db, 'applications', `${name} ${surname}`);
       await setDoc(applicationRef, { cv: id, name, surname, email, position, motivation }, { merge: true });
@@ -108,6 +97,7 @@ export default route(
                   },
                   url: fileUrl,
                   value: 'Download C.V. :arrow_down:',
+                  // eslint-disable-next-line camelcase
                   action_id: 'actionId-0'
                 }
               ]
